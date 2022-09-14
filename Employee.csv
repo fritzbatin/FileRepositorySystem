@@ -1,0 +1,21 @@
+﻿EmployeeId,FirstName,MiddleName,LastName,EmailAddress,Employee_Position,Employee_Department
+10020,foo20,,foo20,fooo20@email.com,IT Applications Specialist,ETGAD
+10021,foo21,fooMiddlename,foo21,fooo21@email.com,IT Applications Specialist,ETGAD
+10022,Fritz,,Batin,fooo20@email.com,IT Applications Specialist,ETGAD
+10023,foo23,,foo23, fbatin@smits.sanmiguel.com.ph,IT Applications Specialist,ETGAD
+10024,foo24,,foo24,fooo24@email.com,,ETGAD
+10025,foo25,,foo25,fooo25@email.com,IT Applications Specialist,
+10026,foo26,,foo26,fooo26@email.com,IT Applications Specialist,ETGAD
+10027,"foo27,28",,foo27,fooo27@email.com,IT Applications Specialist,ETGAD
+10028,foo28,,foo28,fooo28@email.com,IT Applications Specialist,ETGAD
+10029,foo29,,foo29,fooo29@email.com,IT Applications Specialist,ETGAD
+10030,foo30,,foo30,fooo30@email.com,IT Applications Specialist,ETGAD
+10031,foo31,,foo31,fooo31@email.com,IT Applications Specialist,ETGAD
+10032,foo32,,foo32,fooo32@email.com,IT Applications Specialist,ETGAD
+10035,foo35,,foo35,fooo35@email.com,IT Applications Specialist,ETGAD
+10036,foo36,,foo36,fooo36@email.com,IT Applications Specialist,ETGAD
+10037,foo37,,foo37,fooo37@email.com,IT Applications Specialist,ETGAD
+10038,foo38,,foo38,fooo38@email.com,IT Applications Specialist,ETGAD
+10039,foo39,,foo39,fooo39@email.com,IT App,ETGAD
+10040,foo40,,foo40,fooo40@email.com,IT Applications Specialist,ET
+10040,foo40,,foo40,fooo40@email.com,IT Applications Specialist,ETGAD
