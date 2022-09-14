@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Smits.Etg.FileRepositorySystem.Models.EmployeeFile>
+
+@{
+    ViewBag.Title = "Employee Files";
+    var empId = ViewBag.EmpId;
+    var empName = ViewBag.EmployeeName;
+    string errmsg = ViewBag.ErrorMessage;
+}
+
+<h2>Employee Files</h2>
+<h3>@empName</h3>
+
+<div>
+    <p>
+        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Employee")'">
+            Back to List
+        </button>
+
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")*@
+    </p>
+</div>
+@using (Html.BeginForm("Index", "EmployeeFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="postedFile" /><br />
+    <input type="submit" id="btnUpload" value="Upload" />
+    ViewBag.Id = empId;
+}
+
+@using (Html.BeginForm("DownloadFile", "EmployeeFile", FormMethod.Post))
+{
+    <input type="hidden" id="hfFileId" name="FileId" />
+    <input type="submit" id="btnDownload" value="Download" style="display:none" />
+}
+
+@Html.Partial("_Notifications")
+
+<hr />
+<table cellpadding="0" cellspacing="0">
+    <tr>
+        <th style="width:60px">File ID</th>
+        <th style="width:200px">File Name</th>
+        <th style="width:90px">
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th style="width:90px">
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+
+        <th style="width:90px">  </th>
+        <th style="width:50px">  </th>
+
+
+    </tr>
+    @if (Model.Count() > 0)
+    {
+        foreach (var file in Model)
+        {
+            <tr>
+                <td>@file.Id</td>
+                <td>@file.FileName</td>
+                <td>
+                    @Html.DisplayFor(modelItem => file.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => file.CreatedBy)
+                </td>
+                <td><a href="javascript:;" onclick="DownloadFile(@file.Id)">Download</a></td>
+                <td>
+                    <a href="@Url.Action("Delete", "EmployeeFile", new { id=file.Id})"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
+    }
+</table>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+        function DownloadFile(fileId) {
+            $("#hfFileId").val(fileId);
+            $("#btnDownload")[0].click();
+        };
+</script>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.ErrorMessage");
+            };
+    </script>
+}
+

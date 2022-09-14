@@ -1,0 +1,170 @@
+﻿@model Smits.Etg.FileRepositorySystem.Models.EmployeeProject
+
+@{
+    ViewBag.Title = "Edit";
+    var employeeName = ViewBag.EmployeeName;
+    var employeeId = ViewBag.EmployeeId;
+    var employeeprojectId = ViewBag.empProjEmp;
+
+
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "EmployeeProject", FormMethod.Post, new { id = "myform" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Employee Project</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeProject_Project, "Project", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.DropDownList("EmployeeProject_Project", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeeProject_Project, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeProject_Employee, "Employee", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => @employeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+
+                @Html.HiddenFor(model => model.EmployeeProject_Employee, new { htmlAttrebutes = new { @Value = employeeId } })
+                @Html.ValidationMessageFor(model => model.EmployeeProject_Employee, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @*@Html.HiddenFor(model => model.Created)
+            @Html.HiddenFor(model => model.CreatedBy)*@
+        @Html.HiddenFor(model => model.Modified)
+        @Html.HiddenFor(model => model.ModifiedBy)
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "EmployeeProjects")'">
+        Back to List
+    </button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/JavaScript">
+       {
+
+
+           ///Can't select, can't pass the data
+           //$('#EmployeeProject_Employee').attr("disabled", true);
+
+           ///Can Select but disabled, it can pass also the value of Id require for Inserting data
+           //$('#EmployeeProject_Employee option:not(:selected)').attr('disabled', true);
+
+           ///Can't Select but not disabled, it can pass also the value of Id require for Inserting data
+           $('#EmployeeProject_Employee').attr("style", "pointer-events: none;").css({
+               'background-color' :'#eee',
+               'cursor': 'no-drop'
+           })
+
+           ;
+           //Change select event on dropdownlist
+           //$("#EmployeeProject_Project").change(function () {
+           //    // condition goes here
+
+           //    var projectId = new $("#EmployeeProject_Project :selected").text();
+
+           //    window.onload = function () {
+           //        alert("asdasd");
+           //    };
+           //});
+
+
+
+        var IsValid;
+       $(document).ready(function () {
+           $(function() {
+               $("#myform").on("submit",function(e) {
+                   var res = IsValid;
+                   if (IsValid == false) {
+                       $('#EmployeeProject_Project').next('span').text("Please select another project").show();
+                       //alert('Please select another project.');
+                       return false; // cancel submit
+                   }else{
+                       return true; // allow submit
+                   }
+               });
+           });
+
+
+           $("#EmployeeProject_Project").change(function (event) {
+               var projectId = $(this).val()
+               var employeeId = $("#EmployeeProject_Employee").val()
+               var empProjEmp = @employeeprojectId;
+               //alert("You have Project Id : " + projectId);
+               //alert("You have Employee Id : " + employeeId);
+
+
+               var data = {};
+               data.EmployeeProject_Project = projectId;
+               data.EmployeeProject_Employee = employeeId;
+               data.Id = empProjEmp;
+
+               //alert("You have Project Assignment: " + data.Id);
+
+               $.getJSON('@Url.Action("IsProjectAvailbleForEmployee", "EmployeeProject")', data, function (result) {
+
+                   var response = result;
+
+                   if (response === true)
+                {
+                       $('#EmployeeProject_Project').next('span').hide();
+                    IsValid = true;
+                    return true; // allow submit
+                }
+
+                   else{
+                       $('#EmployeeProject_Project').next('span').text("Please select another project").show();
+                       //alert("Please select another Project");
+                    IsValid = false;
+                    return false; // cancel submit
+                }
+
+               });
+
+           });
+       });
+       }
+    </script>
+
+
+
+}

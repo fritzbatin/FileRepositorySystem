@@ -1,0 +1,159 @@
+﻿@model Smits.Etg.FileRepositorySystem.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RowVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RowVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position.Name)
+        </dd>
+        @{
+            var empSal = from es in Model.EmployeeSalaries
+                         orderby es.Created descending
+                         select new { es.Salary, es.Created };
+        }
+
+        <dl class="dl-horizontal">
+            <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Create", "EmployeeSalary",new { id = Model.Id })'">
+                New Salary
+            </button>
+
+            <div>
+                @foreach (var esal in empSal.Take(1))
+                {
+                    <dt>
+                        Salary
+                    </dt>
+
+                        <dd>
+                            @string.Format("{0:C}", esal.Salary)
+                        </dd>
+                        <dt>
+                            Date
+                        </dt>
+
+                        <dd>
+                            @esal.Created
+                        </dd>
+                }
+
+
+            </div>
+            <div>
+                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "EmployeeSalary", new { id = Model.Id })'">
+                    Salary History
+                </button>
+            </div>
+        </dl>
+
+
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Employee")'">
+        Back to List
+    </button>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Employee",new { id = Model.Id })'">
+        Edit
+    </button>
+
+</p>

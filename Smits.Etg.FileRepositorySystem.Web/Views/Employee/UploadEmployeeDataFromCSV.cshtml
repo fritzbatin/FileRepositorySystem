@@ -1,0 +1,162 @@
+﻿@using Smits.Etg.FileRepositorySystem.Models;
+@{
+    ViewBag.Title = "UploadEmployeeDataFromCSV";
+}
+
+<h2>Upload Employee Data From CSV</h2>
+
+
+<div class="col-md-12">
+    <label />
+</div>
+<div class="col-md-12">
+    @using (Html.BeginForm("UploadCsv", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            <label for="attachment">Select a Csv File</label>
+            <label class="btn btn-default btn-file">
+                <input type="file" name="attachmentcsv" id="attachmentcsv" hidden>
+            </label>
+            @Html.Partial("_Notifications")
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Employees")'">
+            Back to List
+        </button>
+    }
+</div>
+
+<div class="col-md-12">
+    <label />
+</div>
+
+<p><strong>Uploaded Data</strong></p>
+
+<table class="table">
+    <tr>
+        <th>
+            EmployeeId
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            EmailAddress
+        </th>
+        <th>
+            Position
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            Remarks
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        if (ViewBag.Employeeuploaded != null)
+        {
+            var uploaded = ViewBag.Employeeuploaded;
+
+            foreach (var item in uploaded)
+            {
+                var name = @item.FirstName + " " + @item.MiddleName + " " + @item.LastName;
+                <tr>
+                    <td>
+                        @item.EmployeeId
+                    </td>
+                    <td>
+                        @name
+                    </td>
+                    <td>
+                        @item.EmailAddress
+                    </td>
+                    <td>
+                        @item.Employee_Position
+                    </td>
+                    <td>
+                        @item.Employee_Department
+                    </td>
+                    <td>
+                        @item.Remarks
+                    </td>
+
+                </tr>
+
+            }
+        }
+
+    }
+
+
+</table>
+
+<br />
+
+
+
+
+<p><strong>Data not uploaded</strong></p>
+<table class="table">
+    @{
+        <tr>
+            <th>
+                Employee Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Email Address
+            </th>
+            <th>
+                Position
+            </th>
+            <th>
+                Department
+            </th>
+            <th>
+                Remarks
+            </th>
+            <th></th>
+        </tr>
+
+
+        if (ViewBag.EmployeeNotUploaded != null)
+        {
+            var notuploaded = ViewBag.EmployeeNotUploaded;
+
+            foreach (var item in notuploaded)
+            {
+                var name = @item.FirstName + " " + @item.MiddleName + " " + @item.LastName;
+                <tr>
+                    <td>
+                        @item.EmployeeId
+                    </td>
+                    <td>
+                        @name
+                    </td>
+                    <td>
+                        @item.EmailAddress
+                    </td>
+                    <td>
+                        @item.Employee_Position
+                    </td>
+                    <td>
+                        @item.Employee_Department
+                    </td>
+                    <td>
+                        @item.Remarks
+                    </td>
+                </tr>
+
+            }
+
+        }
+
+    }
+
+
+</table>

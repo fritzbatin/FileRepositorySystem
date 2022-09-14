@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Smits.Etg.FileRepositorySystem.Models.EmployeeProject>
+
+@{
+    ViewBag.Title = "Assignment";
+}
+
+<h2>Project Assignment</h2>
+
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "EmployeeProject")'">
+        Create New
+    </button>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Project.Name)
+           
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Project.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Position.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Department.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.EmployeeId)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Position.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Department.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+
+            <td>
+                <div style="width: 50px">
+                    <a href="@Url.Action("Details", "EmployeeProject", new { id=item.Id})"><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="@Url.Action("Edit", "EmployeeProject", new { id=item.Id})"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="@Url.Action("Delete", "EmployeeProject", new { id=item.Id})"><i class="glyphicon glyphicon-trash"></i></a>
+                </div>
+              
+            </td>
+        </tr>
+    }
+
+</table>

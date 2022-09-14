@@ -1,0 +1,125 @@
+﻿@model Smits.Etg.FileRepositorySystem.Models.EmployeeSalary
+
+@{
+    ViewBag.Title = "Create";
+
+
+
+    var empdata = ViewBag.empData;
+    var employeeName = empdata.FullName;
+    var empId = empdata.Id;
+    var IdEmployee = empdata.EmployeeId;
+
+    var EmpPosition = empdata.Position.Name;
+
+    var EmpDepartment = empdata.Department.Code;
+    var empSalary = ViewBag.Salary.ToString("0.00");
+
+    if (empSalary == null)
+    {
+        empSalary = 0;
+    }
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>EmployeeSalary</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => empId , new { @Value = empId })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeSalary_EmpId, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => @IdEmployee, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                @Html.HiddenFor(model => model.EmployeeSalary_EmpId, new { htmlAttributes = new { @Value = empId } })
+                @Html.ValidationMessageFor(model => model.EmployeeSalary_EmpId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("FullName", "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => @employeeName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Department", "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => @EmpDepartment, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Position", "Position", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => @EmpPosition, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control", @Value = empSalary } })
+                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Salary" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (Request.UrlReferrer != null)
+{
+    string url = Request.UrlReferrer.ToString();
+    ViewBag.Message = Request.UrlReferrer.ToString();
+
+    if (url.Contains("Employee/Details"))
+    {
+        <div>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Details", "Employee", new { id = empId })'">
+                Back to Details
+            </button>
+        </div>
+    }
+    else
+    {
+        <div>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Employee")'">
+                Back to List
+            </button>
+        </div>
+    }
+
+
+    @*<script type="text/javascript">
+                window.onload = function () {
+                    alert("@ViewBag.Message");
+                };
+        </script>*@
+}
+else
+{
+    <div>
+        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Employee")'">
+            Back to List
+        </button>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

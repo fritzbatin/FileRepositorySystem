@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Smits.Etg.FileRepositorySystem.Models.EmployeeSalary>
+
+@{
+    ViewBag.Title = "Index";
+    var empdata = ViewBag.empData;
+    var employeeName = empdata.FullName;
+    var empId = empdata.Id;
+    var IdEmployee = empdata.EmployeeId;
+
+}
+
+<h2>Salary History</h2>
+<h3>@employeeName  ( @IdEmployee ) </h3>
+
+<button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Details", "Employee", new { id = empId })'">
+    Back
+</button>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var salary = string.Format("{0:C}", item.Salary);
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,201 @@
+﻿@model Smits.Etg.FileRepositorySystem.Models.EmployeeProject
+
+@{
+    ViewBag.Title = "Create";
+    var employeeName = ViewBag.EmployeeName;
+    var employeeId = ViewBag.EmployeeId;
+    var employeeprojectId = ViewBag.empProjEmp;
+    bool IsValid = false;
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "EmployeeProject", FormMethod.Post, new { id = "myform" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Employee Project</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Partial("_Notifications")
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeProject_Project, "Project", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.DropDownList("EmployeeProject_Project", null, "Select Project", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.EmployeeProject_Project, "", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeProject_Employee, "Employee", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.DropDownList("EmployeeProject_Employee", null, "Select Employee", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeeProject_Employee, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "EmployeeProjects")'">
+        Back to List
+    </button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/JavaScript">
+       {
+
+
+       $(document).ready(function () {
+           $(function() {
+               $("#myform").on("submit",function(e) {
+                   var empidStatus = false;
+                   var projidStatus = false;
+                   var employeeId1 = $("#EmployeeProject_Employee").val()
+                   var projectId1 = $("#EmployeeProject_Project").val()
+                   var empProjEmp = @employeeprojectId;
+
+                   //alert("Project Id : " + projectId1);
+                   //alert("Employee Id : " + employeeId1);
+
+
+                   if($("#EmployeeProject_Project").val() != "")
+                   {
+                       //$('#EmployeeProject_Project').next('span').hide();
+                       projidStatus = true;
+                   }else{
+                       $('#EmployeeProject_Project').next('span').text("Please select project").show();
+                       projidStatus = false
+                   }
+                   if($("#EmployeeProject_Employee").val() != "")
+                   {
+                       //$('#EmployeeProject_Employee').next('span').hide();
+                       empidStatus = true;
+                   }else{
+                       $('#EmployeeProject_Employee').next('span').text("Please select employee").show();
+                       empidStatus = false;
+                   }
+
+                   if(projidStatus == false ||  empidStatus == false){
+                       @IsValid = false;
+                   }
+
+                   debugger;
+                   if (@IsValid == false) {
+                       //alert('The Project already taken by selected employee.');
+                       return false; // cancel submit
+                   }else{
+                       return true; // allow submit
+                   }
+               });
+           });
+
+
+           $("#EmployeeProject_Project").change(function (event) {
+               if($("#EmployeeProject_Project").val() != "")
+               {
+                   $('#EmployeeProject_Project').next('span').hide();
+               }else{
+                   $('#EmployeeProject_Project').next('span').text("Please select project").show();
+               }
+              
+               var projectId = $(this).val()
+               var employeeId = $("#EmployeeProject_Employee").val()
+               var empProjEmp = @employeeprojectId;
+               //alert("You have Project Id : " + projectId);
+               //alert("You have Employee Id : " + employeeId);
+
+
+               var data = {};
+               data.EmployeeProject_Project = projectId;
+               data.EmployeeProject_Employee = employeeId;
+               data.Id = empProjEmp;
+
+               //alert("You have Project Assignment: " + data.Id);
+
+               $.getJSON('@Url.Action("IsProjectAvailbleForEmployee", "EmployeeProject")', data, function (result) {
+
+                   var response = result;
+
+                   if (response === true)
+                {
+                       $('#EmployeeProject_Project').next('span').hide();
+                       $('#EmployeeProject_Employee').next('span').hide();
+                    @IsValid = true;
+                    return true; // allow submit
+                }
+
+                   else{
+                       $('#EmployeeProject_Project').next('span').text("Please select another project/employee").show();
+
+
+                       //alert("The Project already taken by selected employee");
+                    @IsValid = false;
+                    return false; // cancel submit
+                }
+
+               });
+
+           });
+
+           $("#EmployeeProject_Employee").change(function (event) {
+               if($("#EmployeeProject_Employee").val() != "")
+               {
+                   $('#EmployeeProject_Employee').next('span').hide();
+               }else{
+                   $('#EmployeeProject_Employee').next('span').text("Please select employee").show();
+               }
+               var employeeId = $(this).val()
+               var projectId = $("#EmployeeProject_Project").val()
+
+               var empProjEmp = @employeeprojectId;
+               //alert("You have Project Id : " + projectId);
+               //alert("You have Employee Id : " + employeeId);
+
+
+               var data = {};
+               data.EmployeeProject_Project = projectId;
+               data.EmployeeProject_Employee = employeeId;
+               data.Id = empProjEmp;
+
+               //alert("You have Project Assignment: " + data.Id);
+
+               $.getJSON('@Url.Action("IsProjectAvailbleForEmployee", "EmployeeProject")', data, function (result) {
+
+                   var response = result;
+
+                   if (response === true) {
+                       $('#EmployeeProject_Project').next('span').hide();
+                          $('#EmployeeProject_Employee').next('span').hide();
+                       @IsValid = true;
+                       return true; // allow submit
+                   }
+
+                   else {
+                       //alert("The Project already taken by selected employee");
+                       $('#EmployeeProject_Project').next('span').text("Please select another project/employee").show();
+                       @IsValid = false;
+                       return false; // cancel submit
+                   }
+
+               });
+
+           });
+
+       });
+       }
+    </script>
+
+
+
+}

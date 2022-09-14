@@ -1,0 +1,346 @@
+﻿@model Smits.Etg.FileRepositorySystem.Models.Project
+
+@{
+    ViewBag.Title = "Edit";
+    var dateStart = "";
+    var dateEnd = "";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Project</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { id = "jam", @class = "form-control", @style = "text-transform:uppercase" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => dateStart,"Start Date", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => dateStart, new { htmlAttributes = new { id = "txtFrom", @class = "form-control", @Value = ViewBag.StartDate } })
+                @Html.ValidationMessageFor(model => dateStart, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => dateEnd, "End Date", htmlAttributes: new { @class = "control-label col-md-2 " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => dateEnd, new { htmlAttributes = new { id = "txtTo", @class = "form-control", @Value = ViewBag.EndDate } })
+                @Html.ValidationMessageFor(model => dateEnd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @id = "days", @class = "form-control", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Project_BusinessUnit, "Business Unit", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                @Html.DropDownList("Project_BusinessUnit", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Project_BusinessUnit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+      
+        @Html.HiddenFor(model => model.Modified)
+        @Html.HiddenFor(model => model.ModifiedBy)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Created, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Project")'">
+        Back to List
+    </button>
+</div>
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+    $("#jam").keydown(function (e) {
+         if (e.keyCode == 32) {
+           return false;
+         }
+    });
+
+    </script>
+
+    <script src="~/Scripts/jquery-ui-1.13.0.min.js"></script>
+    <script>
+            $(document).ready(function () {
+                $(".datepicker").datepicker({
+                    dateFormat: "yy/mm/dd",
+                    changemonth: true,
+                    changeyear: true
+                });
+            });
+
+    </script>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
+            type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+          rel="Stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        var number = document.getElementById('days');
+
+        // Listen for input event on numInput.
+        number.onkeydown = function(e) {
+            if(!((e.keyCode > 95 && e.keyCode < 106)
+              || (e.keyCode > 47 && e.keyCode < 58) 
+              || e.keyCode == 8)) {
+                return false;
+            }
+        }
+
+    $(function () {
+        $("#txtFrom").datepicker({
+            numberOfMonths: 2,
+            dateFormat: "yy/mm/dd",
+            changemonth: true,
+            changeyear: true,
+            onSelect: function (selected) {
+                var dt = new Date(selected);
+                dt.setDate(dt.getDate() + 1);
+                $("#txtTo").datepicker("option", "minDate", dt);
+
+                // calculation of no. of days between two date
+
+                // To set two dates to two variables
+                var date1 = new Date($("#txtFrom").val());
+                var date2 = new Date($("#txtTo").val());
+
+                // To calculate the time difference of two dates
+                var Difference_In_Time = date2.getTime() - date1.getTime();
+
+                // To calculate the no. of days between two dates
+                var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+                if (isNaN(Difference_In_Days)) {
+                    $('#days').val("");
+                } else {
+                    $('#days').val(Difference_In_Days);
+                }
+            }
+            
+
+        });
+
+        $("#txtTo").datepicker({
+            numberOfMonths: 2,
+            dateFormat: "yy/mm/dd",
+            changemonth: true,
+            changeyear: true,
+            onSelect: function (selected) {
+                var dt = new Date(selected);
+                dt.setDate(dt.getDate() - 1);
+                $("#txtFrom").datepicker("option", "maxDate", dt);
+
+
+                // calculation of no. of days between two date
+
+                // To set two dates to two variables
+                var date1 = new Date($("#txtFrom").val());
+                var date2 = new Date($("#txtTo").val());
+
+                // To calculate the time difference of two dates
+                var Difference_In_Time = date2.getTime() - date1.getTime();
+
+                // To calculate the no. of days between two dates
+                var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+
+                if (isNaN(Difference_In_Days)) {
+                    $('#days').val("");
+                } else {
+                    $('#days').val(Difference_In_Days);
+                }
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function(){
+       
+        debugger;
+        var dt = new Date($("#txtFrom").val());
+        dt.setDate(dt.getDate() + 1);
+        $("#txtTo").datepicker("option", "minDate", dt);
+
+        // calculation of no. of days between two date
+
+        // To set two dates to two variables
+        var date1 = new Date($("#txtFrom").val());
+        var date2 = new Date($("#txtTo").val());
+
+        // To calculate the time difference of two dates
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+        if (isNaN(Difference_In_Days)) {
+            $('#days').val("");
+        } else {
+            $('#days').val(Difference_In_Days);
+        }
+
+        var dt1 = new Date($("#txtTo").val());
+        dt1.setDate(dt1.getDate() - 1);
+        $("#txtFrom").datepicker("option", "maxDate", dt1);
+
+
+        // calculation of no. of days between two date
+
+        // To set two dates to two variables
+        var date1 = new Date($("#txtFrom").val());
+        var date2 = new Date($("#txtTo").val());
+
+        // To calculate the time difference of two dates
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+
+        if (isNaN(Difference_In_Days)) {
+            $('#days').val("");
+        } else {
+            $('#days').val(Difference_In_Days);
+        }
+       
+    });
+
+    $(function () {
+        var content = $('#days').val();
+
+        $("#days").bind('keyup mouseup', function () {
+            //alert("changed");
+            if ($('#days').val() != content) {
+                content = $('#days').val();
+
+                var date = new Date($("#txtFrom").val());
+                days = parseInt($("#days").val(), 10);
+                if (days > 0) {
+                    if (!isNaN(days)) {
+                        if (!isNaN(date.getTime())) {
+                            date.setDate(date.getDate() + days);
+                            var day = date.getDate();
+                            var month = (date.getMonth() + 1).toString().padStart(2, "0");
+                            var year = date.getFullYear();
+
+                            $("#txtTo").val(year + "/" + month + "/" + day);
+                            //alert(year + "/" + month + "/" + day);
+
+                        } else {
+                            alert("Invalid Date");
+                        }
+                    } else {
+                        $("#txtTo").val("");
+                    }
+                } else {
+                    $("#txtTo").val("");
+                }
+
+                //alert(newdate.getDate());
+            }
+        });
+
+        $('#days').keyup(function () {
+            if ($('#days').val() != content) {
+                content = $('#days').val();
+
+                var date = new Date($("#txtFrom").val());
+                days = parseInt($("#days").val(), 10);
+                if (days > 0) {
+                    if (!isNaN(days)) {
+                        if (!isNaN(date.getTime())) {
+                            date.setDate(date.getDate() + days);
+                            var day = date.getDate();
+                            var month = (date.getMonth() + 1).toString().padStart(2, "0");
+                            var year = date.getFullYear();
+
+                            $("#txtTo").val(year + "/" + month + "/" + day);
+                            //alert(year + "/" + month + "/" + day);
+
+                        } else {
+                            alert("Invalid Date");
+                        }
+                    } else {
+                        $("#txtTo").val("");
+                    }
+                } else {
+                    $("#txtTo").val("");
+                }
+
+                //alert(newdate.getDate());
+            }
+        });
+
+
+    });
+
+    </script>
+
+
+}

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Smits.Etg.FileRepositorySystem.Models.Employee>
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Employees</h2>
+
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Employee")'">
+        Create New
+    </button>
+
+    @using (Html.BeginForm())
+    {
+        <input type="submit" formaction="@Url.Action("DownloadAsCSV")" class="btn btn-warning" value="Export as CSV" />
+    }
+</p>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+
+            <td>
+                <div style="width: 90px">
+                    <a href="@Url.Action("Details", "Employee", new { id=item.Id})"><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="@Url.Action("Edit", "Employee", new { id=item.Id})"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="@Url.Action("Delete", "Employee", new { id=item.Id})"><i class="glyphicon glyphicon-trash"></i></a>
+                    <a href="@Url.Action("Create", "EmployeeSalary", new { id=item.Id })"><i class="glyphicon glyphicon-usd"></i></a>
+                    <a href="@Url.Action("Index", "EmployeeFile", new { id=item.Id})"><i class="glyphicon glyphicon-file"></i></a>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (ViewBag.Message != null)
+{
+    if (ViewBag.Message == 1)
+    {
+        ViewBag.Message = "Successfuly deleted.";
+    }
+    else
+    {
+        ViewBag.Message = "The Employee you are trying to delete is currently linked to other tables in database.";
+    }
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}

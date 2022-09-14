@@ -1,0 +1,48 @@
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.DL.dll.config
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.DL.dll
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.DL.pdb
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.dll
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.Models.dll
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.Models.pdb
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.xml
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\obj\Debug\Smits.Etg.FileRepositorySystem.DL.csprojResolveAssemblyReference.cache
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\obj\Debug\Smits.Etg.FileRepositorySystem.DL.dll
+c:\users\fritz batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\obj\Debug\Smits.Etg.FileRepositorySystem.DL.pdb
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\LINQtoCSV.dll
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Mvc.dll
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Razor.dll
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.dll
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Mvc.xml
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Razor.xml
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.xml
+C:\Users\Fritz Batin\documents\visual studio 2015\Projects\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.DL.dll.config
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.DL.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.DL.pdb
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.Models.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\LINQtoCSV.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Mvc.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Razor.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\Smits.Etg.FileRepositorySystem.Models.pdb
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Mvc.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.Razor.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\obj\Debug\Smits.Etg.FileRepositorySystem.DL.csprojResolveAssemblyReference.cache
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\obj\Debug\Smits.Etg.FileRepositorySystem.DL.dll
+C:\Fritz\Training\FileRepositorySystem\Smits.Etg.FileRepositorySystem\Smits.Etg.FileRepositorySystem.DL\obj\Debug\Smits.Etg.FileRepositorySystem.DL.pdb
